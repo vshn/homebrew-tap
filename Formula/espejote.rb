@@ -10,7 +10,7 @@ class Espejote < Formula
   on_macos do
     if Hardware::CPU.intel?
       url "https://github.com/vshn/espejote/releases/download/v0.10.0-dev1-keyless/espejote_0.10.0-dev1-keyless_darwin_amd64.tar.gz"
-      sha256 "005c130dbbf583b307c1967732961cac588394b367e210922568bb117933f351"
+      sha256 "01abbcde346e6c771a2b605e601ba36b2ecc2baff5f68302496eaef59c10861d"
 
       def install
         bin.install "espejote"
@@ -21,7 +21,7 @@ class Espejote < Formula
     end
     if Hardware::CPU.arm?
       url "https://github.com/vshn/espejote/releases/download/v0.10.0-dev1-keyless/espejote_0.10.0-dev1-keyless_darwin_arm64.tar.gz"
-      sha256 "a0660e4e451f9afd2a51be671babac74e4a86955e9a9c9db4ee35748d10377b6"
+      sha256 "e9374ce05f224647d8266c5ae77f577772fec4ab2cfa348b4e118655828422cc"
 
       def install
         bin.install "espejote"
@@ -35,7 +35,7 @@ class Espejote < Formula
   on_linux do
     if Hardware::CPU.intel? and Hardware::CPU.is_64_bit?
       url "https://github.com/vshn/espejote/releases/download/v0.10.0-dev1-keyless/espejote_0.10.0-dev1-keyless_linux_amd64.tar.gz"
-      sha256 "8e4af51c2c295e6123d1d5ee20b864a95e87500f638de988c413b3d4af5bc147"
+      sha256 "919bf9db552db2576683467aa47d0dcc9d811df3590d43d330869bfe9b04fb46"
       def install
         bin.install "espejote"
         bash_completion.install "contrib/completion/bash/espejote"
@@ -45,7 +45,7 @@ class Espejote < Formula
     end
     if Hardware::CPU.arm? and Hardware::CPU.is_64_bit?
       url "https://github.com/vshn/espejote/releases/download/v0.10.0-dev1-keyless/espejote_0.10.0-dev1-keyless_linux_arm64.tar.gz"
-      sha256 "34fe8a5dbc684c9f1e3136b4da01bd74d40420b22d8c488f5a74f641fd763958"
+      sha256 "52db4f8f5d416e32832a2d574648a77d3193b40fa5652cae410c26533d88a7aa"
       def install
         bin.install "espejote"
         bash_completion.install "contrib/completion/bash/espejote"
