@@ -5,12 +5,12 @@
 class Espejote < Formula
   desc "An in-cluster templating controller."
   homepage "https://github.com/vshn/espejote"
-  version "0.16.4"
+  version "0.16.5"
 
   on_macos do
     if Hardware::CPU.intel?
-      url "https://github.com/vshn/espejote/releases/download/v0.16.4/espejote_0.16.4_darwin_amd64.tar.gz"
-      sha256 "588a2b90dcadc76e63d1aa0cc8e63a6bbd427cf61361d7326df012139b22df0d"
+      url "https://github.com/vshn/espejote/releases/download/v0.16.5/espejote_0.16.5_darwin_amd64.tar.gz"
+      sha256 "df03888c0d9a1ce3e94822e64a7d2d50bbb412cdc4de4a68c85e4791ae7f120e"
 
       def install
         bin.install "espejote"
@@ -20,8 +20,8 @@ class Espejote < Formula
       end
     end
     if Hardware::CPU.arm?
-      url "https://github.com/vshn/espejote/releases/download/v0.16.4/espejote_0.16.4_darwin_arm64.tar.gz"
-      sha256 "381f97813640172933727509a80f047a607e5a31984e39ab58151f2779581490"
+      url "https://github.com/vshn/espejote/releases/download/v0.16.5/espejote_0.16.5_darwin_arm64.tar.gz"
+      sha256 "6dcca6a27532c20fdd47d382926f103ccafbb53e1424c0f5d4149c8f8267f049"
 
       def install
         bin.install "espejote"
@@ -34,8 +34,8 @@ class Espejote < Formula
 
   on_linux do
     if Hardware::CPU.intel? && Hardware::CPU.is_64_bit?
-      url "https://github.com/vshn/espejote/releases/download/v0.16.4/espejote_0.16.4_linux_amd64.tar.gz"
-      sha256 "255169de6b1cb628510bac64452a90f92851a448003e65e533f176668937756d"
+      url "https://github.com/vshn/espejote/releases/download/v0.16.5/espejote_0.16.5_linux_amd64.tar.gz"
+      sha256 "80be5c80e56b2e071b9e66e1121e173f968c72693e53d7f08a3e467d45745097"
       def install
         bin.install "espejote"
         bash_completion.install "contrib/completion/bash/espejote"
@@ -44,8 +44,8 @@ class Espejote < Formula
       end
     end
     if Hardware::CPU.arm? && Hardware::CPU.is_64_bit?
-      url "https://github.com/vshn/espejote/releases/download/v0.16.4/espejote_0.16.4_linux_arm64.tar.gz"
-      sha256 "d3ef903a1327de71c7e01f9236eccccb4e01c1548ffc355eb565cd7af85e73a8"
+      url "https://github.com/vshn/espejote/releases/download/v0.16.5/espejote_0.16.5_linux_arm64.tar.gz"
+      sha256 "57634d3ade4fc2fedf72994f92ccb180ed636ecf23c2c1142f4e6f01c813fa92"
       def install
         bin.install "espejote"
         bash_completion.install "contrib/completion/bash/espejote"
