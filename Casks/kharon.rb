@@ -1,4 +1,4 @@
-cask "android-platform-tools" do
+cask "kharon" do
   os macos: "darwin", linux: "linux"
   arch arm: "aarch64", intel: "x86_64"
 
