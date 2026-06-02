@@ -23,7 +23,6 @@ cask "kharon" do
     '#{kharon_binary}' completion bash > '#{staged_path}/kharon-completion.bash'
     '#{kharon_binary}' completion zsh > '#{staged_path}/_kharon'
     '#{kharon_binary}' completion fish > '#{staged_path}/kharon-completion.fish'
-    '#{kharon_binary}' install --yes
   SHELL
 
   installer script: {
