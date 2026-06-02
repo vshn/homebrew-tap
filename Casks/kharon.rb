@@ -12,7 +12,7 @@ cask "kharon" do
   desc "Kharon ferries your connections safely across SSH jumphosts into private networks."
   homepage "https://github.com/vshn/kharon"
 
-  binary "#{staged_path}"
+  binary "#{staged_path}/kharon-#{os}-#{arch}" , target: "kharon"
 
   # No zap stanza required
 end
