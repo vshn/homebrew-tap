@@ -3,9 +3,9 @@ cask "kharon" do
   arch arm: "aarch64", intel: "x86_64"
 
   version "v1.6.1-dev3"
-  sha256 arm:          "4e039e83056ccde20acaff0ac7d90d3929da57ac69eca0144dfbc9f3208d037b",
-         x86_64_linux: "1b297fb7ce1260d41077f3ac7dcd7504f661d4599e88f4f5bdd0c49778a2779e",
-         arm64_linux:  "34135457401ab92c5dfef6b9d7dafa4067eb32de687ecbe32de1fbdd191c29a1"
+  sha256 arm:          "6b78ab2fba451aeaca478ac54a775bdfcfe693d2415b85cf1302d1260628b989",
+         x86_64_linux: "0e2f8d5a17fdbe7266a0f57559a1e27aa2e5ee07c4390c435c3b197997a3ea85",
+         arm64_linux:  "4db74010fda48f68dc30eb4067cbd741ed02bdcf12a77dc7eae9dcc6c3cb3da4"
 
   url "https://github.com/vshn/kharon/releases/download/#{version}/kharon-#{os}-#{arch}"
   name "Kharon"
@@ -14,7 +14,7 @@ cask "kharon" do
 
   kharon_binary = "#{staged_path}/kharon-#{os}-#{arch}"
 
-  install_script = &lt;&lt;~SHELL
+  install_script = <<~SHELL
     if [[ "$(uname -s)" == "Darwin" ]]; then
       xattr -dr com.apple.quarantine '#{kharon_binary}'
       codesign -s - --deep --force '#{kharon_binary}'
@@ -50,7 +50,7 @@ cask "kharon" do
   ]
 
   caveats do
-    &lt;&lt;~EOS
+    <<~EOS
       Run `kharon update` to receive jumphost and cluster information.
 
       Setup your browser to use Kharon! https://github.com/vshn/kharon/tree/main/docs/setup
