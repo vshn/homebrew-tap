@@ -12,7 +12,44 @@ cask "kharon" do
   desc "Kharon ferries your connections safely across SSH jumphosts into private networks."
   homepage "https://github.com/vshn/kharon"
 
-  binary "#{staged_path}/kharon-#{os}-#{arch}" , target: "kharon"
+  kharon_binary = "#{staged_path}/kharon-#{os}-#{arch}"
 
-  # No zap stanza required
+  install_script = <<~SHELL
+    if [[ "$(uname -s)" == "Darwin" ]]; then
+      xattr -dr com.apple.quarantine '#{kharon_binary}'
+      codesign -s - --deep --force '#{kharon_binary}'
+    fi
+    chmod +x '#{kharon_binary}'
+    '#{kharon_binary}' completion bash > '#{staged_path}/kharon-completion.bash'
+    '#{kharon_binary}' completion zsh > '#{staged_path}/_kharon'
+    '#{kharon_binary}' completion fish > '#{staged_path}/kharon-completion.fish'
+    '#{kharon_binary}' install --yes
+  SHELL
+
+  installer script: {
+    executable: "sh",
+    args:       ["-e", "-c", install_script],
+  }
+
+  binary kharon_binary, target: "kharon"
+
+  bash_completion "#{staged_path}/kharon-completion.bash", target: "kharon"
+  zsh_completion "#{staged_path}/_kharon", target: "_kharon"
+  fish_completion "#{staged_path}/kharon-completion.fish", target: "kharon.fish"
+
+  uninstall launchctl: "io.vshn.Kharon"
+
+  zap trash: [
+    "~/Library/Caches/io.vshn.kharon",
+    "~/Library/Application Support/io.vshn.kharon",
+    "~/Library/LaunchAgents/io.vshn.kharon.plist",
+    "~/Library/Logs/io.vshn.Kharon.err.log",
+    "~/Library/Logs/io.vshn.Kharon.out.log",
+  ]
+
+  caveats do
+    <<~EOS
+      Setup your browser to use Kharon! https://github.com/vshn/kharon/tree/main/docs/setup
+    EOS
+  end
 end
