@@ -36,14 +36,16 @@ cask "kharon" do
   zsh_completion "#{staged_path}/_kharon", target: "_kharon"
   fish_completion "#{staged_path}/kharon-completion.fish", target: "kharon.fish"
 
-  uninstall launchctl: "io.vshn.Kharon"
+  uninstall launchctl: "io.vshn.Kharon",
+            trash: [
+              "~/Library/LaunchAgents/io.vshn.kharon.plist",
+              "~/Library/Logs/io.vshn.Kharon.err.log",
+              "~/Library/Logs/io.vshn.Kharon.out.log",
+            ]
 
   zap trash: [
     "~/Library/Caches/io.vshn.kharon",
     "~/Library/Application Support/io.vshn.kharon",
-    "~/Library/LaunchAgents/io.vshn.kharon.plist",
-    "~/Library/Logs/io.vshn.Kharon.err.log",
-    "~/Library/Logs/io.vshn.Kharon.out.log",
   ]
 
   caveats do
