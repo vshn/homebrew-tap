@@ -39,7 +39,7 @@ cask "kharon" do
 
   uninstall script: {
               executable:   "/bin/launchctl",
-              args:         ["gui/#{Process.uid}/io.vshn.Kharon"],
+              args:         ["bootout", "gui/#{Process.uid}/io.vshn.Kharon"],
               must_succeed: false,
             },
             trash: [
