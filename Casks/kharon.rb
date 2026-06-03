@@ -37,7 +37,11 @@ cask "kharon" do
   zsh_completion "#{staged_path}/_kharon", target: "_kharon"
   fish_completion "#{staged_path}/kharon-completion.fish", target: "kharon.fish"
 
-  uninstall launchctl: "io.vshn.Kharon",
+  uninstall script: {
+              executable:   "/bin/launchctl",
+              args:         ["gui/#{Process.uid}/io.vshn.Kharon"],
+              must_succeed: false,
+            },
             trash: [
               "~/Library/LaunchAgents/io.vshn.kharon.plist",
               "~/Library/Logs/io.vshn.Kharon.err.log",
