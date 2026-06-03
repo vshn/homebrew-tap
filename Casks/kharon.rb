@@ -2,10 +2,10 @@ cask "kharon" do
   os macos: "darwin", linux: "linux"
   arch arm: "aarch64", intel: "x86_64"
 
-  version "v1.6.0"
-  sha256 arm:          "ddb8f7f47f152bf593e4a3cd8c5f312ee2214124899a98f5230de8e269a7c9f7",
-         x86_64_linux: "4d313154d93309ab6580103ee1b5e89f370c84241a4b7277088564fccb4cd8dd",
-         arm64_linux:  "c2685b4889d64370559e35bff6d1bfe1021754caaf23fc988cc691d8ee5faae4"
+  version "v1.7.0"
+  sha256 arm:          "f396e7064f6fbbd77c69728b91078c1b7572085c61b2157b668f4978646812d8",
+         x86_64_linux: "326e39d5d658b578c762b50a9ddd9347f2c59d94f8ae07720e3bd08ce2a0beb5",
+         arm64_linux:  "dfd201c655445ef16b31a97c976195894c111ee9a43de69d0551eee6d049a841"
 
   url "https://github.com/vshn/kharon/releases/download/#{version}/kharon-#{os}-#{arch}"
   name "Kharon"
@@ -23,6 +23,7 @@ cask "kharon" do
     '#{kharon_binary}' completion bash > '#{staged_path}/kharon-completion.bash'
     '#{kharon_binary}' completion zsh > '#{staged_path}/_kharon'
     '#{kharon_binary}' completion fish > '#{staged_path}/kharon-completion.fish'
+    '#{kharon_binary}' install --yes > /dev/null
   SHELL
 
   installer script: {
@@ -36,9 +37,13 @@ cask "kharon" do
   zsh_completion "#{staged_path}/_kharon", target: "_kharon"
   fish_completion "#{staged_path}/kharon-completion.fish", target: "kharon.fish"
 
-  uninstall launchctl: "io.vshn.Kharon",
+  uninstall script: {
+              executable:   "/bin/launchctl",
+              args:         ["bootout", "gui/#{Process.uid}/io.vshn.Kharon"],
+              must_succeed: false,
+            },
             trash: [
-              "~/Library/LaunchAgents/io.vshn.kharon.plist",
+              "~/Library/LaunchAgents/io.vshn.Kharon.plist",
               "~/Library/Logs/io.vshn.Kharon.err.log",
               "~/Library/Logs/io.vshn.Kharon.out.log",
             ]
@@ -50,6 +55,8 @@ cask "kharon" do
 
   caveats do
     <<~EOS
+      Run `kharon update` to receive jumphost and cluster information.
+
       Setup your browser to use Kharon! https://github.com/vshn/kharon/tree/main/docs/setup
     EOS
   end
