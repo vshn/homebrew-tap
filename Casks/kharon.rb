@@ -2,10 +2,10 @@ cask "kharon" do
   os macos: "darwin", linux: "linux"
   arch arm: "aarch64", intel: "x86_64"
 
-  version "v1.8.1"
-  sha256 arm:          "028b7eef1c117be05ec0f3d31932d9b942bf69a1ffa932eec00386cfdc771df4",
-         x86_64_linux: "ed179a0a1401b46f3babd1da155b43965c1402bb4758971f51092afcef840867",
-         arm64_linux:  "dee3ffe3bb6739b9ea662d2d221b4b9221cd963cd7e39a976c113a41431b7cac"
+  version "v2.0.0"
+  sha256 arm:          "3d348767a11a7b5da92f8719faa342c9e8647cf2df4d85224fab62ea33d31ad4",
+         x86_64_linux: "2c1e27b9740169f321e601ad7332743242232df358012bacb8100fbfe44bddc7",
+         arm64_linux:  "542f452efa0ff6f7567ea5cefb822488fe16816abbfe8bed78e49afb68956616"
 
   url "https://github.com/vshn/kharon/releases/download/#{version}/kharon-#{os}-#{arch}"
   name "Kharon"
